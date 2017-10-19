@@ -5,6 +5,7 @@ import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import br.edu.infnet.aula01.modelo.Aluno;
+import br.edu.infnet.aula01.modelo.Endereco;
 
 public class AlunoDaoInserirAlunoTest {
 
@@ -14,7 +15,7 @@ public class AlunoDaoInserirAlunoTest {
 		Aluno aluno = new Aluno();
 		aluno.setNome("Janete");
 		aluno.setMatricula("6563");
-		aluno.setEndereco("Rua Pindamonhagaba");		
+		aluno.setEndereco(new Endereco("Rua Pindamonhagaba"));		
 		
 		//act 
 		Dao dao = new AlunoDao();

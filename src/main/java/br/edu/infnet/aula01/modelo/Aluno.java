@@ -1,8 +1,11 @@
 package br.edu.infnet.aula01.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Aluno {
@@ -12,7 +15,12 @@ public class Aluno {
 	private Integer id;
 	private String nome;
 	private String matricula;
-	private String endereco;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	private Endereco endereco;
+	
+	@ManyToOne
+	private Turma turma;
 
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -31,11 +39,11 @@ public class Aluno {
 		return matricula;
 	}
 
-	public void setEndereco(String endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 
-	public String getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
@@ -45,6 +53,14 @@ public class Aluno {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Turma getTurma() {
+		return turma;
+	}
+
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
 
 

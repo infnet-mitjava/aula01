@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.edu.infnet.aula01.modelo.Aluno;
+import br.edu.infnet.aula01.modelo.Endereco;
 
 public class AlunoDaoConsultaTest {
 	
@@ -18,7 +19,7 @@ public class AlunoDaoConsultaTest {
 		aluno = new Aluno();
 		aluno.setNome("Janete");
 		aluno.setMatricula("6563");
-		aluno.setEndereco("Rua Honorio");		
+		aluno.setEndereco(new Endereco("Rua Honorio"));		
 		dao.salvar(aluno);
 	}
 	

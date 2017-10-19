@@ -1,8 +1,13 @@
 package br.edu.infnet.aula01.modelo;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Turma {
@@ -10,6 +15,10 @@ public class Turma {
 	@Id @GeneratedValue
 	private Integer id;
 	private String nome;
+	
+	@OneToMany(mappedBy="turma", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Aluno> aluno;
+	
 
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -25,6 +34,14 @@ public class Turma {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public List<Aluno> getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(List<Aluno> aluno) {
+		this.aluno = aluno;
 	}
 
 		

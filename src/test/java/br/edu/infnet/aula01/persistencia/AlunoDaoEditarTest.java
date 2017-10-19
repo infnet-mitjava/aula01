@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.edu.infnet.aula01.modelo.Aluno;
+import br.edu.infnet.aula01.modelo.Endereco;
 
 public class AlunoDaoEditarTest {
 	
@@ -17,7 +18,7 @@ public class AlunoDaoEditarTest {
 		aluno = new Aluno();
 		aluno.setNome("Janete");
 		aluno.setMatricula("6563");
-		aluno.setEndereco("Rua Pindamonhagaba");		
+		aluno.setEndereco(new Endereco("Rua Pindamonhagaba"));		
 		dao.salvar(aluno);
 	}
 	
@@ -26,14 +27,14 @@ public class AlunoDaoEditarTest {
 	@Test
 	public void editarAluno() {
 	//arrange
-		aluno.setEndereco("endereco novo");
+		aluno.setEndereco(new Endereco("endereco novo"));
 		aluno.setMatricula("123");
 		
 		//act
 		dao.atualizar(aluno);
 		
 	//assert	
-		MatcherAssert.assertThat(aluno.getEndereco(), 
+		MatcherAssert.assertThat(aluno.getEndereco().getLogradouro(), 
 								Matchers.is("endereco novo"));
 		
 		
